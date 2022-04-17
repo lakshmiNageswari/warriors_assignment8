@@ -1,0 +1,53 @@
+<br>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        .btncontainer{
+            padding : auto;
+            /* height : 1000px; */
+            /* background-color: aqua; */
+            width: 60%;
+        }
+        .center {
+            margin: auto;
+            /* align-items:  center; */
+            text-align: center;
+            width: 60%;
+            /* border: 5px solid #FFFF00; */
+            padding: auto;
+}
+
+    </style>
+</head>
+<body style ="background-color:lightgoldenrodyellow;">
+    <div class="center">
+        Are you sure you want to {%if typeofquery=='d' %} {{"delete"}} {%else%} {{"edit"}} {%endif%} row number <b>{{userDetails['name']}}</b> from the table <b>{{t}}</b>?
+
+
+        {%if typeofquery =='d'%}
+        <form action="/delet3?primaryKey={{userDetails['name']}}&table={{t}}&type={{typeofquery}}" method="POST"><br>
+            <input type="submit">
+            
+            <button> <a href="/"> NO</a></button>
+        </form>
+
+        {%else%}
+        <form action="/delet3?primaryKey={{userDetails['name']}}&table={{t}}&type={{typeofquery}}" method="POST"><br>
+            <input type="submit">
+            
+            <button> <a href="/"> NO</a></button>
+        </form>
+
+    </div>
+        {%endif%}
+</body>
+

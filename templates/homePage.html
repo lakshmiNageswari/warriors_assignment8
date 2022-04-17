@@ -1,0 +1,120 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        .btncontainer{
+            padding : auto;
+            /* height : 1000px; */
+            /* background-color: aqua; */
+            width: 60%;
+        }
+        .center {
+            margin: auto;
+            /* align-items:  center; */
+            text-align: center;
+            width: 60%;
+            /* border: 5px solid #FFFF00; */
+            padding: auto;
+        }
+
+    </style>
+    
+
+</head>
+<body style ="background-color:lightgoldenrodyellow;">
+       
+    <!-- <table border="1">
+        <tr>
+            <td>
+                <b>Name of the table</b>
+            </td>
+            <td>
+                <b>Action to perform</b>
+            </td>
+        </tr>
+        {% for user in userDetails %}
+            <tr>
+                <td>
+                    {{user[0]}}
+                </td>
+                <td>
+                    <a href="/users?table={{user[0]}}"><button>View table</button> </a>
+                    <a href="/insert?table={{user[0]}}"><button>Insert entry</button> </a>
+                    <a href="/update?table={{user[0]}}"><button>Update entry</button> </a>
+                    <a href="/delete?table={{user[0]}}"><button>Delete an entry</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+     -->
+    
+
+    <br>
+    <br>
+    <h1 style =" text-align: center;
+                    font-size: 3rem;
+                    font-weight: bold;
+                    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                
+            " >
+         Welcome to the War Database</h1>
+    <br>
+    
+    <br>
+    <div class="container btncontainer"> 
+        <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Tables:</h2>
+        <br>
+        
+        <div class="list-group insidetable">
+            <div class="list-group insidetable">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>
+                                <b>Name of the table</b>
+                            </td>
+                            <td>
+                                <b>Action to perform</b>
+                            </td>
+                        </tr>
+                      
+                    </thead>
+                    <tbody>
+                        {% for user in userDetails %}
+                        <tr>
+                            <td>
+                                {{user[0]}}
+                            </td>
+                            <td>
+                                <a href="/users?table={{user[0]}}"><button>View table</button> </a>
+                                <a href="/insert?table={{user[0]}}&type=i"><button>Insert entry</button> </a>
+                                <a href="/delete?table={{user[0]}}&type=u"><button>Update entry</button> </a>
+                                <a href="/delete?table={{user[0]}}&type=d"><button>Delete an entry</button></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+        
+        
+                    </tbody>
+                </table>
+              </div>
+
+        </div>
+    </div>
+    <div class="center">
+        <a href="/assignment8"><button>Assignment8</button> </a>
+    </div>
+
+
+
+</body>
+</html>

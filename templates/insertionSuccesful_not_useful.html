@@ -1,0 +1,31 @@
+{%set a=request.url%}
+{%set tablename = "hi"%}
+    {%set ns = namespace(b = request.url)%}
+    {%for i in range(a|length)%}
+        {%if a[i] == '=' %}
+            {%set tablename = a[i+1:]%}
+            {%set ns.b = a[i+1:]%}
+            
+            
+        {%endif%}
+        
+    {%endfor%}
+
+
+<h1>OPERATION SUCCESFUL!</h1>
+<br>
+
+<a href="/users?table={{ns.b}}"><button>See updated database</button></a>
+<br>
+
+Deleting row number {{rowNo}}
+<br>
+{%for i in td%}
+    {{i}}<br>
+{%endfor%}
+We are gonna delete
+<br>
+{{cmnd}}
+
+<br><br><br><br>
+{{columns}}

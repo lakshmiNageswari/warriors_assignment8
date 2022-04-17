@@ -1,0 +1,39 @@
+{%set a=request.url%}
+    {%set tablename = "hi"%}
+    {%set ns = namespace(b = request.url)%}
+    {%for i in range(a|length)%}
+        {%if a[i] == '=' and a[i-1]== 'e'%}
+            {%set tablename = a[i+1:]%}
+            {%set ns.b = a[i+1:]%}
+            <h2>You want to update the table {{tablename}}</h2>
+            
+        {%endif%}
+        
+    {%endfor%}
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Update stuff here </h2>
+    <form method = "POST" action="">
+        
+        Which columns do you want to update?<br>
+        {%for column in columns%}
+            {{column[0]}} <input type="checkbox" name="column"><br>
+        {%endfor%}
+        <br>
+        <input type = "submit">
+    </form>
+    <a href="/"><button>Go to home page</button></a>
+    <a href="/users?table={{ns.b}}"><button>See current database</button></a>
+    <a href="/delete?table={{ns.b}}"><button>Go to delete page</button></a>
+    <a href="/update?table={{ns.b}}"><button>Go to update page</button></a>
+</body>
+</html>

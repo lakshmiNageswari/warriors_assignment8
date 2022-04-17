@@ -1,0 +1,16 @@
+{%set a=request.url%}
+    {%set tablename = "hi"%}
+    {%set ns = namespace(b = request.url)%}
+    {%for i in range(a|length)%}
+        {%if a[i] == '=' %}
+            {%set tablename = a[i+1:]%}
+            {%set ns.b = a[i+1:]%}
+            
+            
+        {%endif%}
+        
+    {%endfor%}
+
+Deletion succesful from <b>{{ns.b}}</b>
+
+<br>{{pk}}

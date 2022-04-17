@@ -1,0 +1,47 @@
+{%set a=request.url%}
+{%for i in range(a|length)%}
+    {%if a[i] == '=' %}
+        <h2>You are seeing the table {{a[i+1:]}}</h2>
+    {%endif%}
+{%endfor%}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{%set ns = namespace(count = 1)%}
+<body>
+    <table border="1">
+        <tr>
+            <td>
+                <b>Row number</b>
+            </td>
+            {%for colname in columns%}
+                <td>
+                    <b>{{colname[0]}}</b>
+                    {%if colname[3]=='PRI'%}{{"(PK)"}}{%endif%}
+                </td>
+            {%endfor%}
+        </tr>
+        {% for user in userDetails %}
+            <tr>
+                <td>{{ns.count}}{%set ns.count=ns.count+1%}</td>
+                {%for i in range(user|length)%}
+                <td>
+                    {{user[i]}}
+                </td>
+                
+            {%endfor%}
+            </tr>
+        {% endfor %}
+    </table>
+
+    
+    <a href="/"><button>Go to home page</button></a>
+</body>
+</html>

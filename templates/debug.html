@@ -1,0 +1,47 @@
+{%set a = request.url%} {%set ns = namespace(b = request.url)%} {% for i in
+range(a|length)%} {%if a[i]=='p' and a[i+1]=='r'%} {%set ns.b = a[i:]%}
+{%endif%} {%endfor%} {%set ns2 = namespace(tablename = a)%} {%set ns =
+namespace(start = 0)%} {%set ns = namespace(end = 0)%} {%for i in
+range(a|length)%} {%if a[i]== '=' and a[i-1]=='e' %} {% set ns2.tablename =
+a[i+1:]%} {%endif%} {%if a[i]== 'p' and a[i-1]=='?' %} {%set ns.start = i%}
+{%endif%} {%if a[i]== '&' %} {%set ns.end = i%} {%endif%} {%endfor%} {% set ns =
+namespace(primaryKey = a[ns.start+11:ns.end]) %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update page</title>
+  </head>
+  <body>
+    <h2>
+      You are about to update {{ns2.tablename}} and the row with the number
+      {{ns.primaryKey}}
+    </h2>
+
+    <div>The old entry was</div>
+    {%for i in range(entry[aa]|length)%}
+      {{columns[i][0]}} : {{entry[aa][i]}}<br>
+    {%endfor%}
+
+    <form method = "POST" action="/delet3?primaryKey={{ns.primaryKey}}&table={{ns2.tablename}}">
+        
+        <h2>Enter the new entry for the same row</h2> 
+        {%for column in columns%}
+            <b>{{column[0]}}</b>
+            {%if column[3] == 'PRI' %}
+                {{"(keep it the same)"}}
+            {%endif%}
+            <input type="{{column[1]}}", name="{{column[0]}}"/> <br><br>
+        {%endfor%}
+        <input type = "submit">
+    </form><br>
+    <a href="/"><button>Go to home page</button></a>
+    <a href="/users?table={{ns.b}}"><button>See current database</button></a>
+    <a href="/delete?table={{ns.b}}"><button>Go to delete page</button></a>
+    <a href="/update?table={{ns.b}}"><button>Go to update page</button></a>
+  </body>
+</html>
+<br />

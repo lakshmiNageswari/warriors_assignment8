@@ -1,0 +1,37 @@
+{%set a=request.url%}
+    {%set tablename = "hi"%}
+    {%set ns = namespace(b = request.url)%}
+    {%for i in range(a|length)%}
+        {%if a[i] == '=' %}
+            {%set tablename = a[i+1:]%}
+            {%set ns.b = a[i+1:]%}
+            <h2>You want to update the table {{tablename}}</h2>
+            
+        {%endif%}
+        
+    {%endfor%}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    <form method = "POST" >
+        
+        Enter the row of the row you want to edit here <input type="text" name="primarykey">
+        <br>
+        <input type = "submit">
+    </form>
+    <a href="/"><button>Go to home page</button></a>
+    <a href="/users?table={{ns.b}}"><button>See current database</button></a>
+    <a href="/delete?table={{ns.b}}"><button>Go to delete page</button></a>
+    <a href="/update?table={{ns.b}}"><button>Go to update page</button></a>
+</body>
+</html>
