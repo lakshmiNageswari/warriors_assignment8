@@ -348,9 +348,12 @@ def question1():
         
         query_prefix = prefix + "%"
         query_suffix = "%"+ suffix
-        
-        #Optimizied Query
-        cur.execute("(select * from people where name_of_person like %s) union (select * from people where name_of_person like %s)", (query_prefix, query_suffix))
+        if (len(prefix)==0 and len(suffix)>0):
+            cur.execute("select * from people where name_of_person like %s", [query_suffix])
+        elif(len(prefix)>0 and len(suffix)==0):
+            cur.execute("select * from people where name_of_person like %s", [query_prefix])
+        elif(len(prefix)>0 and len(suffix)>0):
+            cur.execute("(select * from people where name_of_person like %s) union (select * from people where name_of_person like %s)", (query_prefix, query_suffix))
         mysql.connection.commit()
         output = cur.fetchall()
 
