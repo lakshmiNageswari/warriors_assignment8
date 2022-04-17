@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <style>
         .btncontainer{
@@ -17,6 +17,7 @@
             /* height : 1000px; */
             /* background-color: aqua; */
             width: 60%;
+
         }
         .center {
             padding: auto;
@@ -27,19 +28,26 @@
             align-items:  center;
             text-align: center;
             width: 60%;
+            background: linear-gradient(-120deg,#2980b9, #8e441d);
             /* border: 5px solid #FFFF00; */
-            
-}
+        }
 
+        .question-statement{
+          font-size: 1.2em;
+          font-style: italic;
+          color: black;
+        }
+
+      
     </style>
 </head>
 
-<body style ="background-color:lightgoldenrodyellow;">
+<body style ="background:linear-gradient(-120deg,#dcdf92, #4089d2);">
     <h1><center>Assignment 8: Query Optimization</center></h1>
-
+    <div>
     <div style=" margin: 50px">
-      <h2>Question1: </h2>
-      <p>Optimize the query (having Like statement) for searching in the text-type column with the clause -
+      <h2>Question 1: </h2>
+      <p class="question-statement">Optimize the query (having Like statement) for searching in the text-type column with the clause -
         ‘UNION’. (Hint: Query can be stated as searching first_name’s starting with ‘A’ OR last_name’s
         starting with ‘B’</p>
       <p>Table : People</p>
@@ -70,11 +78,12 @@
             </tr>
         {% endfor %}
     </div>
+    <div></div>
 
 
     <div style=" margin: 50px">
       <h2>Question 4:</h2>
-      <p> Add a new column ‘date’ with date data-type, wherever suitable in your database and check if the
+      <p class="question-statement"> Add a new column ‘date’ with date data-type, wherever suitable in your database and check if the
         searching can be optimized for a specific date (Hint: datatype for the ‘date’ column is important).</p>
       <p>Table : People</p>
       <p>Attribute: date_of_birth</p>
@@ -100,7 +109,7 @@
 
     <div style=" margin-left: 50px;">
       <h2>Question 5:</h2>
-      <p>Intentionally add a null value to any column of your choice and then perform the count operation,
+      <p class="question-statement">Intentionally add a null value to any column of your choice and then perform the count operation,
         such that if a null is present, then the count command should return an ‘0’ and it should count
         from the remaining values.</p>
       <p>Table : Weapons</p>
@@ -119,7 +128,7 @@
 
     <div style=" margin: 50px">
       <h2>Question 7:</h2>
-      <p>Perform JOIN on any two tables you find suitable, perform joins of your choice, and then explain
+      <p class="question-statement">Perform JOIN on any two tables you find suitable, perform joins of your choice, and then explain
         how ‘join’ helps better in the optimization and what could be drawbacks of multiple joins.</p>
       <p>Table : soldiers and people</p>
       <p>Natural Join</p>
